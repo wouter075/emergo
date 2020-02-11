@@ -170,64 +170,6 @@ include 'inc/inc.leden.php';
                     url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Dutch.json'
                 }
         });
-
-        // editlid
-        $('.editlid').click(function () {
-            // id van aan geklikte row
-            let id = $(this).closest('tr').data('id');
-            $('#staticLidId').val(id);
-
-            // netjes wachten tot het klaar is
-            getLid(id).done(function(info) {
-                $('#inputNaam').val(info['naam']);
-                $('#inputTelefoon').val(info['telefoon']);
-                $('#inputEmail').val(info['email']);
-                $('#editLedenModal').modal('show');
-            });
-        });
-
-        $('#modelEditLedenSave').click(function () {
-            let id = $('#fromEditLedenModal #staticLidId').val();
-            let naam = $('#fromEditLedenModal #inputNaam').val();
-            let telefoon = $('#fromEditLedenModal #inputTelefoon').val();
-            let email = $('#fromEditLedenModal #inputEmail').val();
-
-            saveLid(id, naam, telefoon, email).done(function(info) {
-                if (!isNaN(info)) {
-                    $('#editLedenModal').modal('hide');
-
-                    // dirty!
-                    location.reload();
-                }
-            })
-        });
-
-        // dellid
-        $('.dellid').click(function () {
-            // id van aan geklikte row
-            let id = $(this).closest('tr').data('id');
-            getLid(id).done(function(info) {
-                bootbox.confirm({
-                    message: "Weet je zeker dat je <strong>" + info['naam'] + "</strong> wilt verwijderen?",
-                    buttons: {
-                        confirm: {
-                            label: 'Ja',
-                            className: 'btn-danger'
-                        },
-                        cancel: {
-                            label: 'Nee',
-                            className: 'btn-success'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result) {
-                            alert('delete!');
-                        }
-                    }
-                });
-            });
-        });
-
     });
 </script>
 </body>
