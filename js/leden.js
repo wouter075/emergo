@@ -1,10 +1,18 @@
 // leden functies
 function getLid(id) {
-    return $.getJSON("ajax/get.lid.php", { "id": id });
+    return $.getJSON("ajax/get.lid.php", {"id": id});
 }
 
 function saveLid(id, naam, email, telefoon) {
-    return $.getJSON("ajax/save.lid.php", { "id": id, "naam": naam, "email": email, "telefoon": telefoon });
+    return $.getJSON("ajax/save.lid.php", {"id": id, "naam": naam, "email": email, "telefoon": telefoon});
+}
+
+function delLid(id) {
+    return $.getJSON("ajax/del.lid.php", {"id": id});
+}
+
+function newLid(naam, email, telefoon) {
+    return $.getJSON("ajax/new.lid.php", {"naam": naam, "email": email, "telefoon": telefoon});
 }
 
 $(document).ready(function(){
@@ -58,10 +66,14 @@ $(document).ready(function(){
                 },
                 callback: function (result) {
                     if (result) {
-                        alert('delete!');
+                        delLid(id).done(function (info) {
+                            location.reload();
+                        });
                     }
                 }
             });
         });
     });
+
+    // newlid
 });

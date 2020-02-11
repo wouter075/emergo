@@ -58,7 +58,7 @@ include 'inc/inc.leden.php';
     <div class="row">
         <div class="col-6">
             <h2>Leden</h2>
-            <a class="btn btn-primary btn-sm float-left">Toevoegen</a>
+            <a class="btn btn-primary btn-sm float-left" data-toggle="modal" data-target="#newLedenModal">Toevoegen</a>
             <table class="table table-striped" id="dtleden">
                 <thead>
                 <tr>
@@ -138,8 +138,47 @@ include 'inc/inc.leden.php';
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="modelEditLedenSave">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+                    <button type="button" class="btn btn-primary" id="modelEditLedenSave">Opslaan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="newLedenModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Lid toevoegen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="fromNewLedenModal">
+                        <div class="form-group row">
+                            <label for="inputNaam" class="col-sm-2 col-form-label">Naam</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputNaam" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputTelefoon" class="col-sm-2 col-form-label">Telefoon</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputTelefoon" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+                    <button type="button" class="btn btn-primary" id="modelNewLedenSave">Opslaan</button>
                 </div>
             </div>
         </div>
