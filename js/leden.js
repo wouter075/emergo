@@ -76,4 +76,22 @@ $(document).ready(function(){
     });
 
     // newlid
+    $('#modelNewLedenSave').click(function() {
+        let naam = $('#fromNewLedenModal #inputNaam').val();
+        let telefoon = $('#fromNewLedenModal #inputTelefoon').val();
+        let email = $('#fromNewLedenModal #inputEmail').val();
+
+        // check if the values exists (not proper)
+        if (naam && telefoon && email) {
+            newLid(naam,email,telefoon).done(function(info){
+                if (!isNaN(info)) {
+                    $('#newLedenModal').modal('hide');
+
+                    // dirty!
+                    location.reload();
+                }
+            })
+        }
+
+    });
 });
