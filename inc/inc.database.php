@@ -11,3 +11,5 @@ try {
 catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
+
+//function addLog(id,)

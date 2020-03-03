@@ -7,4 +7,6 @@ $telefoon = filter_var($_GET['telefoon'], FILTER_SANITIZE_STRING);
 
 $sql = "INSERT INTO leden (naam, telefoon, email) VALUES (?, ?, ?)";
 $conn->prepare($sql)->execute([$naam, $telefoon, $email]);
+
+# todo: loggin
 echo 1;
